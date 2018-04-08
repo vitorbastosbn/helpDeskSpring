@@ -14,13 +14,13 @@ public interface TicketRepository extends MongoRepository<Ticket, String> {
 	Page<Ticket> findByUsuarioIdOrderByDataDesc(Pageable pages, String usuarioId);
 
 	// Pesquisa por texto ignorando case sensitive o spring se vira
-	Page<Ticket> findByTituloIgnoreCaseContainingAndStatusAndPrioridadeOrderByDataDesc(String titulo, String status,
+	Page<Ticket> findByTituloIgnoreCaseContainingAndStatusContainingAndPrioridadeContainingOrderByDataDesc(String titulo, String status,
 			String prioridade, Pageable pages);
 
-	Page<Ticket> findByTituloIgnoreCaseContainingAndStatusAndPrioridadeAndUsuarioIdOrderByDataDesc(String titulo,
+	Page<Ticket> findByTituloIgnoreCaseContainingAndStatusContainingAndPrioridadeContainingAndUsuarioIdOrderByDataDesc(String titulo,
 			String status, String prioridade, String usuarioId, Pageable pages);
 
-	Page<Ticket> findByTituloIgnoreCaseContainingAndStatusAndPrioridadeAndUsuarioDesignadoIdOrderByDataDesc(
+	Page<Ticket> findByTituloIgnoreCaseContainingAndStatusContainingAndPrioridadeContainingAndUsuarioDesignadoIdOrderByDataDesc(
 			String titulo, String status, String prioridade, String usuarioDesignadoId, Pageable pages);
 
 	Page<Ticket> findByProtocolo(Long protocolo, Pageable pages);

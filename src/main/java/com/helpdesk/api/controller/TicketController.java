@@ -195,7 +195,7 @@ public class TicketController {
 		return ResponseEntity.ok(response);
 	}
 
-	@GetMapping(value = "{pagina}/{registrosPorPagina}/{protocolo}/{titulo}/{status}/{prioridade}")
+	@GetMapping(value = "{pagina}/{registrosPorPagina}/{protocolo}/{titulo}/{status}/{prioridade}/{designado}")
 	@PreAuthorize("hasAnyRole('CLIENTE', 'TECNICO')")
 	public ResponseEntity<Response<Page<Ticket>>> findByParametros(HttpServletRequest request,
 			@PathVariable("pagina") int pagina, @PathVariable("registrosPorPagina") int registrosPorPagina,
@@ -249,9 +249,8 @@ public class TicketController {
 			}
 
 			Ticket ticketAtual = this.ticketService.findById(id);
-			ticketAtual.setStatus(StatusEnum.getStatus(status));
 
-			if (status.equals(StatusEnum.DESIGNADO.getDescricao())) {
+			if (status.equals(StatusEnum.DESIGNADO)) {
 				ticketAtual.setUsuarioDesignado(usuarioFromRequest(request));
 			}
 
@@ -259,7 +258,6 @@ public class TicketController {
 			AlteraStatus alteraStatus = new AlteraStatus();
 			alteraStatus.setUsuarioRespAlteracao(usuarioFromRequest(request));
 			alteraStatus.setDataAlteracaoStatus(new Date());
-			alteraStatus.setStatus(StatusEnum.getStatus(status));
 			alteraStatus.setTicket(ticketSalvo);
 			this.ticketService.createAlteraStatus(alteraStatus);
 			response.setData(ticketSalvo);
