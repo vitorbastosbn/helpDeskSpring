@@ -3,9 +3,11 @@ package com.helpdesk.api.repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import com.helpdesk.api.entity.Ticket;
 
+@Repository("ticketRepository")
 public interface TicketRepository extends MongoRepository<Ticket, String> {
 
 	// Para usar paginação usa o Page com atributo pages e o atributo da pesquisa. O
