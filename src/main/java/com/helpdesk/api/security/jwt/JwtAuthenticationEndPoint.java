@@ -19,7 +19,7 @@ public class JwtAuthenticationEndPoint implements AuthenticationEntryPoint, Seri
 	@Override
 	public void commence(HttpServletRequest requisicao, HttpServletResponse resposta, AuthenticationException autenticacaoException)
 			throws IOException, ServletException {
-		resposta.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+		resposta.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Não autorizado");
 	}
 
 }
