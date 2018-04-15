@@ -250,15 +250,17 @@ public class TicketController {
 
 			Ticket ticketAtual = this.ticketService.findById(id);
 
-			if (status.equals(StatusEnum.DESIGNADO)) {
+			if (status.equals(StatusEnum.DESIGNADO.toString())) {
 				ticketAtual.setUsuarioDesignado(usuarioFromRequest(request));
 			}
+			ticketAtual.setStatus(StatusEnum.getStatus(status));
 
 			Ticket ticketSalvo = (Ticket) this.ticketService.createOrUpdate(ticketAtual);
 			AlteraStatus alteraStatus = new AlteraStatus();
 			alteraStatus.setUsuarioRespAlteracao(usuarioFromRequest(request));
 			alteraStatus.setDataAlteracaoStatus(new Date());
 			alteraStatus.setTicket(ticketSalvo);
+			alteraStatus.setStatus(StatusEnum.getStatus(status));
 			this.ticketService.createAlteraStatus(alteraStatus);
 			response.setData(ticketSalvo);
 
