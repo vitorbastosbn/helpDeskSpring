@@ -43,8 +43,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 			}
 
 		}
+		resposta.addHeader("Access-Control-Allow-Headers", "Origin, Access-Control-Allow-Origin, Access-Control-Allow-Headers, X-Requested-With, Content-Type, Accept, Authorization");
 		resposta.addHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-		resposta.addHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Origin, X-Requested-With, Content-Type, Accept, Authorization");
 		chain.doFilter(requisicao, resposta);
 
 	}
