@@ -22,8 +22,6 @@ import com.helpdesk.api.security.jwt.JwtTokenUtil;
 import com.helpdesk.api.security.model.UsuarioAtual;
 import com.helpdesk.api.service.UsuarioService;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-
 @RestController
 @CrossOrigin(origins = "*")
 public class AuthenticationRestController {
