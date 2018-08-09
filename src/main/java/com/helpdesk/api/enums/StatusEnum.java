@@ -5,8 +5,6 @@ public enum StatusEnum {
 
 	public static StatusEnum getStatus(String status) {
 		switch (status) {
-		case "NOVO":
-			return NOVO;
 		case "DESIGNADO":
 			return DESIGNADO;
 		case "RESOLVIDO":
@@ -17,6 +15,8 @@ public enum StatusEnum {
 			return REPROVADO;
 		case "FECHADO":
 			return FECHADO;
+		case "":
+			return NOVO;
 		default:
 			return NOVO;
 		}

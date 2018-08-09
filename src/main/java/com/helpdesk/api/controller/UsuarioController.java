@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.helpdesk.api.entity.Usuario;
-import com.helpdesk.api.enums.PerfilEnum;
 import com.helpdesk.api.response.Response;
 import com.helpdesk.api.service.UsuarioService;
 import com.mongodb.DuplicateKeyException;
